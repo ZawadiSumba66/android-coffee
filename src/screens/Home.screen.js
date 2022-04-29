@@ -1,11 +1,12 @@
 import React from  'react';
 
 import {StyleSheet, View, Text} from 'react-native';
+import Coffees from '../components/coffee/Coffees';
 
 export const Home = () => {
     return (
         <View style={styles.container}>
-            <Text>Home!</Text>
+            <Coffees />
         </View>
     )
 }
