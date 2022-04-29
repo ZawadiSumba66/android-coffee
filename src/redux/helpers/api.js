@@ -1,10 +1,11 @@
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const RAILS_API = 'http://localhost:3001/api/v1';
+export const RAILS_API = 'http://10.0.2.2:3001/api/v1';
 
 export const config = {
   headers: {
-    Authorization: `token ${localStorage.getItem('token')}`,
+    Authorization: `token ${AsyncStorage.getItem('token')}`,
   },
 };
 
