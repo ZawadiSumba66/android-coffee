@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Coffee = ({ coffee, navigation }) => {
+const Coffee = ({ coffee, handlePress  }) => {
   return (
     <View style={styles.coffeeItem}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handlePress}>
           <Image source={{ uri: coffee.image }} style={styles.coffeeImage} />
         </TouchableOpacity>
         <View>
