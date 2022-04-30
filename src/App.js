@@ -6,11 +6,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import { Home } from './screens/Home.screen';
+import  Home from './screens/Home.screen';
 import { Orders } from './screens/Orders.screen';
 import {Profile} from './screens/Profile.screen';
 import {theme} from './theme';
-import {HomeIcon} from './components/Icons';
+import {HomeIcon, OrdersIcon, ProfileIcon} from './components/Icons';
 import CustomizeCoffee from './components/coffee/CustomizeCoffee';
 
 const CoffeeStack = createStackNavigator();
@@ -18,16 +18,16 @@ const BottomTabs = createBottomTabNavigator();
 
 const CoffeeStackScreen = () => {
   return (
-    <CoffeeStack.Navigator
-      screenOptions={{ headerShown: false }}
-    >
+    <CoffeeStack.Navigator>
       <CoffeeStack.Screen 
         name="Dashboard"
         component={Home}
+        options={{title: 'Dashboard'}}
       />
       <CoffeeStack.Screen 
         name='CustomizeCoffee'        
         component={CustomizeCoffee}
+        options={{title: 'CustomizeCoffee'}}
       />
     </CoffeeStack.Navigator>
   )
@@ -39,6 +39,7 @@ const App = () => {
       <NavigationContainer>
         <BottomTabs.Navigator
           screenOptions={({route}) => ({
+          headerShown: false,
           tabBarShowLabel: false,
           tabBarActiveTintColor: theme.colorBlack,
           tabBarInactiveTintColor: theme.colorAmber,
@@ -47,10 +48,10 @@ const App = () => {
               return <HomeIcon size={size} color={color} />;
             }
             if (route.name === 'Orders') {
-              return <Text>Orders</Text>;
+              return <OrdersIcon size={size} color={color} />;
             }
             if (route.name === 'Profile') {
-              return <Text>Profile</Text>;
+              return <ProfileIcon size={size} color={color} />;
             }
             return null;
           },
@@ -58,7 +59,6 @@ const App = () => {
         <BottomTabs.Screen
           name="Home"
           component={CoffeeStackScreen}
-          options={{title: 'Dashboard'}}
         />
         <BottomTabs.Screen
           name="Orders"
