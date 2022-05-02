@@ -54,10 +54,9 @@ const Home = ({ latte, espresso, popular, navigation })  => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#D4D1D1',
-    fontFamily: font.fontFamilyBold
   },
   categoryTitle: {
-    fontWeight: "bold",
+    fontFamily: font.fontFamilyBold,
     fontSize: 22,
     textDecorationLine: "underline",
     marginLeft: 15,

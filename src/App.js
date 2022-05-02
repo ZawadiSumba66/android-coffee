@@ -22,7 +22,7 @@ const CoffeeStackScreen = () => {
       <CoffeeStack.Screen 
         name="Dashboard"
         component={Home}
-        options={{title: `Flavored Cafe ${<HomeIcon />}`}}
+        options={{title: 'Flavored Cafe'}}
       />
       <CoffeeStack.Screen 
         name='CustomizeCoffee'        

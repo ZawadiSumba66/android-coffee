@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { font } from "../../theme";
 
 const Coffee = ({ coffee, handlePress  }) => {
   return (
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   },
 
   coffeeLabel: {
-    fontWeight: "bold",
+    fontFamily: font.fontFamilyBold,
     fontSize: 15
   },
 

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, Image, StyleSheet, Pressable, Button} from 'react-native';
 import {connect, useDispatch} from 'react-redux';
 import {getCoffeePost} from '../../redux/slices/categories.slice';
-import {theme} from '../../theme';
+import {font, theme} from '../../theme';
 
 const size = [
   {measure: 'text-2xl', description: 'small'},
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 10,
     fontSize: 25,
-    fontWeight: 'bold',
+    fontFamily: font.fontFamilyBold,
     left: 20,
     color: theme.colorWhite,
   },
@@ -132,9 +132,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   parameterTitle: {
-    fontWeight: 'bold',
-    fontSize: 21,
-    marginRight: 5
+    fontSize: 17,
+    marginRight: 5,
+    fontFamily: font.fontFamilyBold,
   },
   parametersContainer: {
     marginHorizontal: 10,
@@ -156,8 +156,8 @@ const styles = StyleSheet.create({
     borderRadius: 6
   },
   optionItemText: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 17,
+    fontFamily: font.fontFamilyBold,
     padding: 3
   }
 });
