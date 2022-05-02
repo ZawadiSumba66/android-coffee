@@ -22,12 +22,12 @@ const CoffeeStackScreen = () => {
       <CoffeeStack.Screen 
         name="Dashboard"
         component={Home}
-        options={{title: 'Dashboard'}}
+        options={{title: `Flavored Cafe ${<HomeIcon />}`}}
       />
       <CoffeeStack.Screen 
         name='CustomizeCoffee'        
         component={CustomizeCoffee}
-        options={{title: 'CustomizeCoffee'}}
+        options={{title: 'Customize Your Drink'}}
       />
     </CoffeeStack.Navigator>
   )
@@ -39,8 +39,8 @@ const App = () => {
       <NavigationContainer>
         <BottomTabs.Navigator
           screenOptions={({route}) => ({
-          headerShown: false,
           tabBarShowLabel: false,
+          tabBarActiveBackgroundColor: theme.colorGray,
           tabBarActiveTintColor: theme.colorBlack,
           tabBarInactiveTintColor: theme.colorAmber,
           tabBarIcon: ({size, color}) => {
@@ -59,6 +59,7 @@ const App = () => {
         <BottomTabs.Screen
           name="Home"
           component={CoffeeStackScreen}
+          options={{headerShown: false}}
         />
         <BottomTabs.Screen
           name="Orders"

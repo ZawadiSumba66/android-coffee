@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
 
   coffeeLabel: {
-    fontWeight: "700",
+    fontWeight: "bold",
     fontSize: 15
   },
 

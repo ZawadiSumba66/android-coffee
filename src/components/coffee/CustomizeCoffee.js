@@ -100,15 +100,15 @@ const CustomizeCoffee = ({post, route}) => {
               {' '}
               {selectedPrice.toFixed(2)}</Text>
         </View>
-        <View>
-          <Button
-            title="CHECkOUT"
-            color={theme.colorAmber}
-            disabled={selectedSize ? false : true}
-            accessibilityLabel="Checkout to the payment modal"
-          />
-        </View>
       </View>
+      <View style={{ marginHorizontal: 10 }}>
+        <Button
+          title="CHECkOUT"
+          color={theme.colorAmber}
+          disabled={selectedSize ? false : true}
+          accessibilityLabel="Checkout to the payment modal"
+        />
+        </View>
     </View>
   );
 };
@@ -133,13 +133,13 @@ const styles = StyleSheet.create({
   },
   parameterTitle: {
     fontWeight: 'bold',
-    fontSize: 23,
+    fontSize: 21,
     marginRight: 5
   },
   parametersContainer: {
     marginHorizontal: 10,
-    marginTop: 15,
-    width: 300
+    width: 300,
+    marginTop: 15
   },
   options: {
     flexDirection: 'row',
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     borderRadius: 6
   },
   optionItemText: {
-    fontSize: 19,
+    fontSize: 20,
     fontWeight: 'bold',
     padding: 3
   }

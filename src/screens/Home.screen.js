@@ -3,6 +3,7 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { connect, useDispatch } from "react-redux";
 import { getCoffeePosts } from "../redux/slices/categories.slice";
 import Coffee from "../components/coffee/Coffee";
+import { font } from "../theme";
 
 const Home = ({ latte, espresso, popular, navigation })  => {
   const dispatch = useDispatch()
@@ -53,12 +54,12 @@ const Home = ({ latte, espresso, popular, navigation })  => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#D4D1D1',
+    fontFamily: font.fontFamilyBold
   },
   categoryTitle: {
     fontWeight: "bold",
     fontSize: 22,
     textDecorationLine: "underline",
-    marginBottom: 10,
     marginLeft: 15,
     marginTop: 5
   }
