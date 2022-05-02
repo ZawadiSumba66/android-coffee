@@ -5,3 +5,9 @@ export const theme = {
     colorGray: '#D1D5DB',
     colorBlack: '#000',
 }
+
+export const font = {
+  fontFamilyBold: 'Montserrat-Bold',
+  fontFamilyRegular: 'Montserrat-Regular',
+  fontFamilyLight: 'Montserrat-Light',
+}
