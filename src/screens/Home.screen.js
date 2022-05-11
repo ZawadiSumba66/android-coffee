@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, ScrollView } from 'react-native';
 import { connect, useDispatch } from "react-redux";
 import { getCoffeePosts } from "../redux/slices/categories.slice";
 import Coffee from "../components/coffee/Coffee";
@@ -13,7 +13,7 @@ const Home = ({ latte, espresso, popular, navigation })  => {
 
   console.log('popular coffee', popular);
   return (
-   <View style={styles.container}>
+   <ScrollView style={styles.container}>
       <Text style={styles.categoryTitle}>Popular</Text>
       <View>
         <FlatList 
@@ -47,7 +47,7 @@ const Home = ({ latte, espresso, popular, navigation })  => {
           )}
         /> 
       </View>
-   </View>   
+   </ScrollView>   
   )
 }
 
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#D4D1D1',
   },
+  
   categoryTitle: {
     fontFamily: font.fontFamilyBold,
     fontSize: 22,

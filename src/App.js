@@ -1,77 +1,41 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import  Home from './screens/Home.screen';
-import { Orders } from './screens/Orders.screen';
-import {Profile} from './screens/Profile.screen';
-import {theme} from './theme';
-import {HomeIcon, OrdersIcon, ProfileIcon} from './components/Icons';
-import CustomizeCoffee from './components/coffee/CustomizeCoffee';
+import SplashScreen from './screens/Splash.screen';
+import Auth from './screens/Auth.navigator';
+import DrawerNavigation from './screens/Drawer.navigator';
 
-const CoffeeStack = createStackNavigator();
-const BottomTabs = createBottomTabNavigator();
-
-const CoffeeStackScreen = () => {
-  return (
-    <CoffeeStack.Navigator>
-      <CoffeeStack.Screen 
-        name="Dashboard"
-        component={Home}
-        options={{title: 'Flavored Cafe'}}
-      />
-      <CoffeeStack.Screen 
-        name='CustomizeCoffee'        
-        component={CustomizeCoffee}
-        options={{title: 'Customize Your Drink'}}
-      />
-    </CoffeeStack.Navigator>
-  )
-}
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <BottomTabs.Navigator
-          screenOptions={({route}) => ({
-          tabBarShowLabel: false,
-          tabBarActiveBackgroundColor: theme.colorGray,
-          tabBarActiveTintColor: theme.colorBlack,
-          tabBarInactiveTintColor: theme.colorAmber,
-          tabBarIcon: ({size, color}) => {
-            if (route.name === 'Home') {
-              return <HomeIcon size={size} color={color} />;
-            }
-            if (route.name === 'Orders') {
-              return <OrdersIcon size={size} color={color} />;
-            }
-            if (route.name === 'Profile') {
-              return <ProfileIcon size={size} color={color} />;
-            }
-            return null;
-          },
-        })}>
-        <BottomTabs.Screen
-          name="Home"
-          component={CoffeeStackScreen}
+      <Stack.Navigator initialRouteName="SplashScreen">
+        {/* SplashScreen which will come once for 5 Seconds */}
+        <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          // Hiding header for Splash Screen
           options={{headerShown: false}}
         />
-        <BottomTabs.Screen
-          name="Orders"
-          component={Orders}
-          options={{title: 'My Orders'}}
+        {/* Auth Navigator: Include Login and Signup */}
+        <Stack.Screen
+          name="Auth"
+          component={Auth}
+          options={{headerShown: false}}
         />
-        <BottomTabs.Screen
-          name="Profile"
-          component={Profile}
-          options={{title: 'Your Profile'}}
+        {/* Navigation Drawer as a landing page */}
+        <Stack.Screen
+          name="DrawerNavigation"
+          component={DrawerNavigation}
+          // Hiding header for Navigation Drawer
+          options={{headerShown: false}}
         />
-      </BottomTabs.Navigator>
+      </Stack.Navigator>
       </NavigationContainer>
     </Provider>
   );
