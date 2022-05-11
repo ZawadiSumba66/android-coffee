@@ -5,9 +5,9 @@ import {getCoffeePost} from '../../redux/slices/categories.slice';
 import {font, theme} from '../../theme';
 
 const size = [
-  {measure: 'text-2xl', description: 'small'},
-  {measure: 'text-4xl', description: 'medium'},
-  {measure: 'text-5xl', description: 'large'},
+  {description: 'small'},
+  {description: 'medium'},
+  {description: 'large'},
 ];
 
 const milk = [{type: 'Normal'}, {type: 'Soya Milk'}, {type: 'Oat Milk'}];
@@ -47,6 +47,13 @@ const CustomizeCoffee = ({post, route}) => {
     }
   };
 
+  const toggleModal = (e) => {
+    if (e) e.preventDefault();
+    setSelectedMilk(undefined);
+    setSelectedTopping(undefined);
+    setSelectedSize(undefined);
+  };
+
   return (
     <View>
       <View>
@@ -59,6 +66,7 @@ const CustomizeCoffee = ({post, route}) => {
           <View style={styles.options}>
             {size.map(option => (
               <Pressable 
+                key={option.description}
                 onPress={() => handlePrice(option)}
                 style={[styles.optionItem, selectedSize?.description === option.description ? styles.selectedOption : undefined]}
               >
@@ -72,6 +80,7 @@ const CustomizeCoffee = ({post, route}) => {
           <View style={styles.options}>
             {milk.map(option => (
               <Pressable 
+                key={option.type}
                 onPress={() => setSelectedMilk(option)}
                 style={[styles.optionItem, selectedMilk?.type === option.type ? styles.selectedOption : undefined]}
               >
@@ -85,6 +94,7 @@ const CustomizeCoffee = ({post, route}) => {
           <View style={styles.options}>
             {topping.map(option => (
               <Pressable 
+                key={option.type}
                 onPress={() => setSelectedTopping(option)}
                 style={[styles.optionItem, selectedTopping?.type === option.type ? styles.selectedOption : undefined]}
               >
@@ -95,7 +105,7 @@ const CustomizeCoffee = ({post, route}) => {
         </View>
         <View style={[styles.parameter, {alignItems: 'center'}]}>
           <Text style={styles.parameterTitle}>Total Price:</Text>
-          <Text style={{fontWeight: 'bold', fontSize: 20}}> 
+          <Text style={{fontFamily: font.fontFamilyBold, fontSize: 20}}> 
               KES
               {' '}
               {selectedPrice.toFixed(2)}</Text>
@@ -103,6 +113,7 @@ const CustomizeCoffee = ({post, route}) => {
       </View>
       <View style={{ marginHorizontal: 10 }}>
         <Button
+          onPress={toggleModal}
           title="CHECkOUT"
           color={theme.colorAmber}
           disabled={selectedSize ? false : true}
@@ -119,6 +130,7 @@ const styles = StyleSheet.create({
     width: 400,
     position: 'relative',
   },
+
   coffeeText: {
     position: 'absolute',
     bottom: 10,
@@ -127,34 +139,41 @@ const styles = StyleSheet.create({
     left: 20,
     color: theme.colorWhite,
   },
+
   parameter: {
     marginBottom: 10,
     flexDirection: 'row',
   },
+
   parameterTitle: {
     fontSize: 17,
     marginRight: 5,
     fontFamily: font.fontFamilyBold,
   },
+
   parametersContainer: {
     marginHorizontal: 10,
     width: 300,
     marginTop: 15
   },
+
   options: {
     flexDirection: 'row',
     flexWrap:'wrap'
   },
+
   selectedOption: {
     backgroundColor: theme.colorBlack,
     color: theme.colorWhite
   },
+
   optionItem: {
     backgroundColor: theme.colorGray,
     margin: 4,
     padding: 3,
     borderRadius: 6
   },
+
   optionItemText: {
     fontSize: 17,
     fontFamily: font.fontFamilyBold,
