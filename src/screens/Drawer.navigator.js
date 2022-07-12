@@ -1,5 +1,5 @@
 import React from 'react';
-import { Profile } from "./Profile.screen";
+import Profile from "./Profile.screen";
 import CustomSidebarMenu from "../components/CustomSideBarMenu";
 import {createDrawerNavigator} from '@react-navigation/drawer'
 import BottomNavigation from "./Bottom.navigator";
@@ -14,11 +14,11 @@ const DrawerNavigation = (props) => {
         drawerContent={CustomSidebarMenu}
       >
         <Drawer.Screen
-          name="BottomNavigation"
+          name="Dashboard"
           component={BottomNavigation}
         />
         <Drawer.Screen
-          name="profileScreenStack"
+          name="Profile"
           component={Profile}
         />
       </Drawer.Navigator>

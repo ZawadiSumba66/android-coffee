@@ -5,7 +5,6 @@ import {
   View,
   Text,
   KeyboardAvoidingView,
-  Keyboard,
   TouchableOpacity,
   ScrollView,
   ImageBackground,
@@ -59,8 +58,10 @@ const SignUp = props => {
       password,
       password_confirmation: confirmPassword,
     };
-
-      const response = await api.post('/users', {user}).then(()=>{
+     
+      setLoading(true);
+      try {
+      const response = await api.post('/users', { user });
         if (response.data.token) {
           AsyncStorage.setItem('token', response.data.token);
           setLoading(true);
@@ -68,10 +69,13 @@ const SignUp = props => {
           return response.data;
         }
         return response.data;
-      }).catch((error) => {
-      setLoading(false);
-      setError(error.response.data.message);
-      })
+      } catch (error) {
+        if (error) {
+          setLoading(false);
+          setError(error.response.data.message);
+          return  error.response.data.message;
+       }
+      }
   };
 
   if (isRegistraionSuccess) {
@@ -79,10 +83,9 @@ const SignUp = props => {
       <View
         style={{
           flex: 1,
-          backgroundColor: '#307ecc',
           justifyContent: 'center',
         }}>
-        <Text style={styles.successTextStyle}>Registration Successful</Text>
+        <Text style={styles.successTextStyle}>Registration Successful!</Text>
         <TouchableOpacity
           style={styles.buttonStyle}
           activeOpacity={0.5}
@@ -125,6 +128,7 @@ const SignUp = props => {
                 autoCapitalize="sentences"
                 returnKeyType="next"
                 blurOnSubmit={false}
+                defaultValue={firstname}
               />
             </View>
             <View style={styles.SectionStyle}>
@@ -240,9 +244,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   successTextStyle: {
-    color: 'white',
+    color: theme.colorBlack,
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 23,
     padding: 30,
   },
 });

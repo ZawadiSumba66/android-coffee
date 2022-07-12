@@ -27,7 +27,6 @@ const CustomizeCoffee = ({post, route}) => {
   const [selectedPrice, setSelectedPrice] = useState(0);
   const dispatch = useDispatch();
   const {id} = route.params;
-  console.log('customize coffee', id);
 
   useEffect(() => {
     dispatch(getCoffeePost(id));

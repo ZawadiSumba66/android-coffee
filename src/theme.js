@@ -4,7 +4,8 @@ export const theme = {
     colorBlue: '#1D84B5',
     colorGray: '#D1D5DB',
     colorBlack: '#000',
-}
+    backgroundSidebar: '#D4D1D1',
+  }
 
 export const font = {
   fontFamilyBold: 'Montserrat-Bold',

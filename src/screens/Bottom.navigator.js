@@ -3,7 +3,7 @@ import Home from './Home.screen';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Orders } from './Orders.screen';
-import { Profile } from './Profile.screen';
+import Profile  from './Profile.screen';
 import { font, theme } from '../theme';
 import {HomeIcon, OrdersIcon, ProfileIcon} from '../components/Icons';
 import NavigationDrawerHeader from '../components/NavigationDrawerHeader';
@@ -39,7 +39,6 @@ const BottomNavigation = ({navigation}) => {
             headerLeft: () => (
               <NavigationDrawerHeader navigationProps={navigation} />
             ),
-            tabBarActiveBackgroundColor: theme.colorGray,
             tabBarActiveTintColor: theme.colorBlack,
             tabBarInactiveTintColor: theme.colorAmber,
             tabBarIcon: ({size, color}) => {

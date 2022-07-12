@@ -52,12 +52,11 @@ const Login = ({ navigation }) => {
         }
         return response.data;
       } catch (error) {
+        setLoading(false);
         setError(error.response.data.errors)
         return error.response.data.errors;
       }
   };
-
-  console.log('rose');
  
   return (
     <ImageBackground source={coffeeImage} style={styles.mainBody}>

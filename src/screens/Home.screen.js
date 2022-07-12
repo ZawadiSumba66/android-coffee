@@ -11,9 +11,8 @@ const Home = ({ latte, espresso, popular, navigation })  => {
     dispatch(getCoffeePosts());
   }, [])
 
-  console.log('popular coffee', popular);
   return (
-   <ScrollView style={styles.container}>
+   <View style={styles.container}>
       <Text style={styles.categoryTitle}>Popular</Text>
       <View>
         <FlatList 
@@ -47,7 +46,7 @@ const Home = ({ latte, espresso, popular, navigation })  => {
           )}
         /> 
       </View>
-   </ScrollView>   
+   </View>   
   )
 }
 
