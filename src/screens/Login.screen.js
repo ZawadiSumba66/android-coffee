@@ -42,10 +42,19 @@ const Login = ({ navigation }) => {
       email
     }
     setLoading(true);
+
+    const storeData = async (key, value) => {
+      try {
+        await AsyncStorage.setItem(key, value);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     try {
         const response = await api.post('/auth', { user });
         if (response.data.token) {
-          AsyncStorage.setItem('token', response.data.token);
+          storeData('token', response.data.token)
           console.log('response', response.data.token)
           navigation.navigate('DrawerNavigation');
           return response.data;

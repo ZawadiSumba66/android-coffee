@@ -9,8 +9,10 @@ import {
  
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { theme } from '../theme';
+import { useUserContext } from '../context/user/user.context';
  
 const CustomSidebarMenu = (props) => {
+  const { user } = useUserContext();
   return (
     <View style={stylesSidebar.sideMenuContainer}>
     <View style={stylesSidebar.profileHeader}>
@@ -20,7 +22,7 @@ const CustomSidebarMenu = (props) => {
         </Text>
       </View>
       <Text style={stylesSidebar.profileHeaderText}>
-       username
+       {user.firstname} {user.lastname}
       </Text>
     </View>
     <View style={stylesSidebar.profileHeaderLine} />
@@ -68,7 +70,7 @@ const stylesSidebar = StyleSheet.create({
   sideMenuContainer: {
     width: '100%',
     height: '100%',
-    backgroundColor: theme.backgroundSidebar,
+    backgroundColor: theme.colorWhite,
     paddingTop: 40,
     color: 'white',
   },
@@ -83,16 +85,18 @@ const stylesSidebar = StyleSheet.create({
     height: 60,
     borderRadius: 60 / 2,
     color: 'white',
-    backgroundColor: '#ffffff',
+    backgroundColor: theme.colorGray,
     textAlign: 'center',
     justifyContent: 'center',
     alignItems: 'center',
   },
   profileHeaderText: {
-    color: 'white',
+    color: theme.colorBlack,
     alignSelf: 'center',
     paddingHorizontal: 10,
     fontWeight: 'bold',
+    textTransform: 'capitalize',
+    fontSize: 20
   },
   profileHeaderLine: {
     height: 1,
@@ -101,19 +105,20 @@ const stylesSidebar = StyleSheet.create({
     marginTop: 15,
   },
 
-  drawerLabel: {
-    fontSize: 20,
-    cursor: 'pointer',
-  },
-  drawerLabelFocused: {
-    fontSize: 14,
-    fontWeight: '500',
-  },
-  drawerItem: {
-    height: 50,
-    justifyContent: 'center'
-  },
-  drawerItemFocused: {
-    backgroundColor: '#ba9490',
-  },
+  // drawerLabel: {
+  //   fontSize: 30,
+  //   cursor: 'pointer',
+  // },
+  // drawerLabelFocused: {
+  //   fontSize: 14,
+  //   fontWeight: '500',
+  // },
+  // drawerItem: {
+  //   height: 50,
+  //   justifyContent: 'center',
+  //   backgroundColor: 'rgba(180,83,9, 0.5)',
+  // },
+  // drawerItemFocused: {
+  //   backgroundColor: 'rgba(180,83,9, 0.5)',
+  // },
 });

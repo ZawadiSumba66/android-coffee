@@ -4,12 +4,29 @@ import { connect, useDispatch } from "react-redux";
 import { getCoffeePosts } from "../redux/slices/categories.slice";
 import Coffee from "../components/coffee/Coffee";
 import { font } from "../theme";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Home = ({ latte, espresso, popular, navigation })  => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getCoffeePosts());
   }, [])
+ 
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const data = await AsyncStorage.getItem('token');
+        if (data !== null) {
+          console.log('mytoken', data);
+          return data;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData()
+  }, [])
+ 
 
   return (
    <View style={styles.container}>

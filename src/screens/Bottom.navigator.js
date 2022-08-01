@@ -48,9 +48,6 @@ const BottomNavigation = ({navigation}) => {
               if (route.name === 'Orders') {
                 return <OrdersIcon size={size} color={color} />;
               }
-              if (route.name === 'Profile') {
-                return <ProfileIcon size={size} color={color} />;
-              }
               return null;
             },
           })}>
@@ -63,11 +60,6 @@ const BottomNavigation = ({navigation}) => {
             name="Orders"
             component={Orders}
             options={{title: 'My Orders'}}
-          />
-          <BottomTabs.Screen
-            name="Profile"
-            component={Profile}
-            options={{title: 'Your Profile'}}
           />
         </BottomTabs.Navigator>
     );

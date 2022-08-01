@@ -19,12 +19,19 @@ const initialState = {
   status: 'idle',
 };
 
-const token = AsyncStorage.getItem('token');
-let userId;
-if (token) {
-  const decoded = jwtDecode(token);
-  userId = decoded.sub;
-}
+export const getToken = async () => {
+  try {
+    const token = await AsyncStorage.getItem('token');
+    let userId;
+    if (token !== null) {
+      const decoded = jwtDecode(token);
+      userId = decoded.sub;
+      return userId;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const createUser = createAsyncThunk(
   'user/createuser',
@@ -75,7 +82,8 @@ export const loginUser = createAsyncThunk(
 export const updateUser = createAsyncThunk(
   'user/updateUser',
   async (user) => {
-    const response = await api.put(`/users/${userId}`, config, user);
+    let data = await getToken()
+    const response = await api.put(`/users/${data}`, config, {user});
     return response.data;
   },
 );

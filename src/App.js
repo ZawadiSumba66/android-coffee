@@ -7,11 +7,13 @@ import store from './redux/store';
 import SplashScreen from './screens/Splash.screen';
 import Auth from './screens/Auth.navigator';
 import DrawerNavigation from './screens/Drawer.navigator';
+import { UserProvider } from './context/user/user.context';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
+    <UserProvider>
     <Provider store={store}>
       <NavigationContainer>
       <Stack.Navigator initialRouteName="SplashScreen">
@@ -38,6 +40,7 @@ const App = () => {
       </Stack.Navigator>
       </NavigationContainer>
     </Provider>
+    </UserProvider>
   );
 };
 
