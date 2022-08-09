@@ -10,6 +10,7 @@ import {
   Text,
 } from 'react-native';
 import {connect} from 'react-redux';
+import Avatar from '../components/Avatar';
 import {useUserContext} from '../context/user/user.context';
 import {api, config} from '../redux/helpers/api';
 import {fetchUser, updateUser} from '../redux/slices/user.slice';
@@ -78,6 +79,9 @@ const Profile = () => {
               }}>
               Update your Profile
             </Text>
+            <View style={styles.AvatarSection}>
+              <Avatar />
+            </View>
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
