@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, connect} from 'react-redux';
 import DocumentPicker from 'react-native-document-picker';
 import {View, Image, StyleSheet, Button} from 'react-native';

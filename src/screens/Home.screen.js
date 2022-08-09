@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, FlatList, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, FlatList, StyleSheet, ScrollView, LogBox } from 'react-native';
 import { connect, useDispatch } from "react-redux";
 import { getCoffeePosts } from "../redux/slices/categories.slice";
 import Coffee from "../components/coffee/Coffee";
@@ -10,6 +10,7 @@ const Home = ({ latte, espresso, popular, navigation })  => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getCoffeePosts());
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
   }, [])
  
   useEffect(() => {
@@ -29,7 +30,7 @@ const Home = ({ latte, espresso, popular, navigation })  => {
  
 
   return (
-   <View style={styles.container}>
+   <ScrollView style={styles.container}>
       <Text style={styles.categoryTitle}>Popular</Text>
       <View>
         <FlatList 
@@ -63,7 +64,7 @@ const Home = ({ latte, espresso, popular, navigation })  => {
           )}
         /> 
       </View>
-   </View>   
+   </ScrollView>   
   )
 }
 

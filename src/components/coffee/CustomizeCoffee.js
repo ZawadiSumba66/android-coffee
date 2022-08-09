@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, Image, StyleSheet, Pressable, Button} from 'react-native';
+import {View, Text, Image, StyleSheet, Pressable, Button, ScrollView, LogBox} from 'react-native';
 import {connect, useDispatch} from 'react-redux';
 import {getCoffeePost} from '../../redux/slices/categories.slice';
 import {font, theme} from '../../theme';
@@ -29,7 +29,8 @@ const CustomizeCoffee = ({post, route}) => {
   const {id} = route.params;
 
   useEffect(() => {
-    dispatch(getCoffeePost(id));
+    dispatch(getCoffeePost(id))
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
   }, []);
 
   const handlePrice = option => {
@@ -54,7 +55,7 @@ const CustomizeCoffee = ({post, route}) => {
   };
 
   return (
-    <View>
+    <ScrollView>
       <View>
         <Image source={{uri: post.image}} style={styles.coffeeImage} />
         <Text style={styles.coffeeText}>{post.name}</Text>
@@ -119,7 +120,7 @@ const CustomizeCoffee = ({post, route}) => {
           accessibilityLabel="Checkout to the payment modal"
         />
         </View>
-    </View>
+    </ScrollView>
   );
 };
 
